@@ -1,0 +1,20 @@
+{% extends "AughtSpaceBundle::sidebar_layout.html.twig" %}
+
+{% block main_block_title %}
+    <h1>{% trans %}general.contact{% endtrans %}</h1>
+{% endblock %}
+
+{% block main_block %}
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for flash in flashes %}
+            <div class="alert-{{ label }}">
+                {{ flash }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <form action="{{ path('contact_lang', {'_locale': app.request.locale}) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <button type="submit">Send</button>
+    </form>
+{% endblock %}

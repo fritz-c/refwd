@@ -1,0 +1,36 @@
+{% extends "AughtSpaceBundle::layout.html.twig" %}
+
+{% block content %}
+    {% if app.environment == 'prod' %}
+        {% set example_page_token = 'home.example_page_token'|trans %}
+    {% else %}
+        {% set example_page_token = 'gg8t7d2nzgrx' %}
+    {% endif %}
+    {% set example_page = path('space_view_lang',
+        {'token': example_page_token,
+        'v': 'home.example_page_user'|trans,
+        '_locale': app.request.locale})
+    %}
+    <div class="sixteen columns">
+        <h1 class="remove-bottom" {# style="margin-top: 40px" #}>{% trans %}app.name{% endtrans %}</h1>
+        <h5>{% trans %}home.headline{% endtrans %}</h5>
+        <hr />
+    </div>
+    <div class="one-third column">
+        <h3>{% trans %}home.what_is_headline{% endtrans %}</h3>
+        <p>{% trans %}home.what_is_lead_in{% endtrans %}</p>
+        <ul class="square">
+          <li>{{ 'home.likes_description'|trans|raw }}</li>
+          <li>{{ 'home.comments_description'|trans|raw }}</li>
+          <li>{{ 'home.styling_description'|trans({'%example_page%': '<a href="' ~ example_page ~ '">' ~ ('home.example_page_linktext'|trans) ~ '</a>' })|raw }}</li>
+        </ul>
+    </div>
+    <div class="one-third column">
+        <h3>{% trans %}home.howto_headline{% endtrans %}</h3>
+        <p>{% trans %}home.howto{% endtrans %}</p>
+    </div>
+    <div class="one-third column">
+        <h3>{% trans %}home.interested_headline{% endtrans %}</h3>
+        <p>{{ 'home.interested'|trans({'%example_page%': '<a href="' ~ example_page ~ '">' ~ ('home.example_page_linktext'|trans) ~ '</a>' })|raw }}</p>
+    </div>
+{% endblock %}

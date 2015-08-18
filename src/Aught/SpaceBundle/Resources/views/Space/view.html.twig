@@ -1,0 +1,99 @@
+{% extends "AughtSpaceBundle::sidebar_layout.html.twig" %}
+
+{% block title "Post by " ~ author.name %}
+
+{% block head %}
+    <style type="text/css">
+        .like-list li:after {
+            content: "{% trans %}space.relish_divider{% endtrans %}";
+        }
+        .like-list li:nth-last-of-type(2):after {
+            content: "{% trans %}space.relish_and{% endtrans %}";
+        }
+        .loading:before {
+            content: url("{{ asset('bundles/aughtspace/images/loading.gif') }}")
+        }
+    </style>
+    <link href="{{ asset('bundles/aughtspace/css/view.css') }}" rel="stylesheet" type="text/css" media="all" />
+{% endblock %}
+
+{% block foot_scripts %}
+    <script type="text/javascript" src="{{ asset('bundles/aughtspace/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/aughtspace/js/socket.io.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/aughtspace/js/jquery.hotkeys.js') }}"></script>
+    <script type="text/javascript">
+        var socketUri = '{% if app.environment == 'prod' %}wss{% else %}ws{% endif %}://{{ srv_domain }}:8443';
+        var roomId    = '{{ space.token }}';
+        var peopleInfo = {
+            {{ author.id }} : { name : '{{ author.name }}', email: '{{ author.muddleMail }}' },
+            {% for user in participants %}
+                {{ user.id }} : { name : '{{ user.name }}', email: '{{ user.muddleMail }}' },
+            {% endfor %}
+        };
+        var likeButtonText   = '{% trans %}space.relish_button{% endtrans %}';
+        var unlikeButtonText = '{% trans %}space.unrelish_button{% endtrans %}';
+        var youLikeText      = '{% trans %}space.relish_you{% endtrans %}';
+        var likeOthersSingular = '{% trans %}space.n_others_relish_singular{% endtrans %}';
+        var likeOthersPlural   = '{% trans %}space.n_others_relish_plural{% endtrans %}';
+        var youLikeEndTextSingular = '{% trans %}space.relish_this_singular{% endtrans %}';
+        var youLikeEndTextPlural   = '{% trans %}space.relish_this_plural{% endtrans %}';
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/aughtspace/js/view.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/aughtspace/js/likes.js') }}"></script>
+{% endblock %}
+
+{% block sidebar %}
+    <ul>
+        <li><a href="#likes">{% trans %}space.relish{% endtrans %}</a></li>
+        <li><a href="#chat-box">{% trans %}space.chat{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+
+{% block main_block_title %}
+    <h1 class="subject-line">{{ space.subject }}</h1>
+    <p class="author-line">From: {{ author.addressLineFormatMuddle }}</p>
+{% endblock %}
+
+{% block main_block %}
+    <div class="mail-body" id="mail-body">
+        {{ space.body|raw|nl2br }}
+    </div>
+
+    <br>
+    <hr class="large">
+
+    <form onsubmit="return false;" id="comment-form">
+        {% spaceless %}
+        <ul id="likes" class="like-list abbreviated twelve columns">
+        {% for relish in space.relishes %}
+            <li id="like_id_{{relish.author.id}}">{{ relish.author.name|default(relish.author.muddleMail) }}</li>
+        {% endfor %}
+        </ul>
+        {% endspaceless %}
+        <div class="clearfix">
+            <div class="three columns">&nbsp;</div>
+            <button id="like-btn" class="six columns" href="#">Like</button>
+            <div class="three columns">&nbsp;</div>
+        </div>
+
+        <h3>{% trans %}space.who_are_you{% endtrans %}</h3>
+        {{ form_widget(form.author) }}
+
+        <h3>{% trans %}space.add_comment{% endtrans %}</h3>
+        <div class="twelve columns chat-container">
+            <div class="chat-box" id="chat-box">
+                {% for comment in space.comments %}
+                    <div class="row"><div class="two columns alpha user-name" title="{{comment.author.muddleMail}}">{{comment.author.bestNameMuddle}}</div><div class="ten columns omega user-message">{{ comment.body|nl2br }}</div>{# <div style="float:right">({{comment.createdAt|date('H:i:s') }})</div> #}</div>
+                {% endfor %}
+            </div>
+            <div class="row clearfix" style="margin-bottom: 0;">
+                {{ form_widget(form.body,   {'attr': {'class': 'nine columns alpha chat-message-field', 'placeholder': 'space.chat.type_message'|trans }}) }}
+                {{ form_widget(form.submit, {'attr': {'class': 'two columns omega send-button'}, 'label': 'space.chat.send'|trans}) }}
+            </div>
+        </div>
+
+    </form>
+    <br>
+{# ({{comment.createdAt|date('Y-m-d H:i:s') }})#}
+
+{% endblock %}

@@ -1,0 +1,115 @@
+.system_msg {
+    color: #111;
+    font-style: italic;
+}
+
+.row div.user-name {
+    font-weight:bold;
+    color: #F60;
+    background-color: inherit;
+    text-align: center;
+}
+
+.row div.user-message {
+    background-color: inherit;
+}
+
+.rounded-white {
+    background: #FFF;
+    border-radius: 12px;
+}
+
+.subject-line {
+    padding: 12px 12px;
+    text-decoration: underline;
+}
+
+.author-line {
+    padding: 12px 12px;
+}
+
+.mail-body {
+    background: #FFF;
+    padding: 30px 30px;
+    border-radius: 3px;
+    -webkit-box-shadow: -3px 3px 16px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    -3px 3px 16px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         -3px 3px 16px 0px rgba(50, 50, 50, 0.75);
+}
+
+.subject-line, .author-line, .mail-body {
+}
+
+.chat-container {
+    border-radius: 5px;
+    border: 2px #000;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.chat-box, .chat-message-field {
+    background: #FEFFFF;
+    /*font-family: Consolas, sans-serif;*/
+    font: 12px 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-size: 15px;
+    word-wrap: break-word;
+}
+.chat-box div {
+    margin: 0;
+    padding: 5px 0;
+    background: #FDFFFF;
+}
+.chat-box>div:nth-child(odd) {
+    background: #D1D6D6;
+}
+.chat-box {
+    max-height: 300px;
+    overflow: auto;
+    /*border-bottom: 1px #000 solid*/
+}
+textarea.chat-message-field {
+    margin-bottom: 0;
+    border: 0;
+    border-top: 2px #000 solid;
+    /*resize: none;*/
+    /*width: 60%;*/
+    /*box-sizing: border-box;*/
+    background: #DDFFE1;
+    color: #000;
+}
+
+button.send-button {
+    font-size:150%;
+    margin-bottom: 0;
+    background-color: lightyellow;
+}
+
+button#like-btn {
+    margin-bottom: 20px;
+    background-color: orange;
+    font-size:200%;
+}
+
+html body {
+    background: #FDFFFF;
+    color: #000;
+}
+
+img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.like-list li {
+    display: inline;
+}
+.like-list li:last-of-type:after {
+    content: "";
+}
+.abbreviated li + li:after {
+    content: "";
+}
+.abbreviated li + li + li {
+    display: none;
+}

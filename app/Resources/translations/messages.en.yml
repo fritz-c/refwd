@@ -1,0 +1,70 @@
+# English Translation File
+app.name: Re-Fwd
+app.login: Log In
+
+general.terms_of_use: Terms of Use
+general.contact: Contact
+general.lang_en: English
+general.lang_ja: 日本語
+general.meta_description: >
+  Set up a space for recipients of your e-mail message to comment
+  and like, just like you would on a social network.
+general.meta_keywords: >
+  email forwards forwarded comment like service funny
+  business workplace anecdote classic reply-all social network
+
+
+home.headline: Email Forwarding, Better
+home.what_is_headline: "What is Re-Fwd?"
+home.howto_headline: How to use it?
+home.interested_headline: Interested?
+home.what_is_lead_in: "Re-Fwd enhances your email forwarding experience with:"
+home.likes_description: >
+  <strong>Likes</strong>:
+  See who liked your email.
+home.comments_description: >
+  <strong>Comments</strong>:
+  Get the conversation going like no email could before,
+  with a fast-paced chat-like system.
+home.styling_description: >
+  <strong>Styling</strong>:
+  Showcase your email in the ultra-clean interface of Re-Fwd.
+  See %example_page% for an example page.
+home.howto: >
+  Include <a href="mailto:add@re-fwd.com">add@re-fwd.com</a> in one of the <strong>To:</strong>,
+  <strong>CC:</strong> or <strong>BCC:</strong> fields of the email you're forwarding, and your page will be
+  automatically generated. You and the recipients of the email will promptly
+  receive a reply to the original, containing a link to the page.
+home.interested: Get started right away, or check out the sample page %example_page%!
+home.example_page_token: gxn5v9spm4dr
+home.example_page_user: pbaker@example.edu
+home.example_page_linktext: Here
+home.about: "Re-Fwd (pronounced \"re-forward\")"
+home.disclaimer: Use this service at your own risk. I claim no liability.
+
+space.new_space: New Space
+space.add_comment: Comments
+space.who_are_you: Who are you?
+space.relish: Likes
+space.relish_divider: ", "
+space.relish_and: " and "
+space.relish_button: Like
+space.unrelish_button: Unlike
+space.relish_you: You
+space.relish_this_singular: " likes this!"
+space.relish_this_plural: " like this!"
+space.n_others_relish_singular: " and {0} more"
+space.n_others_relish_plural: " and {0} others"
+
+space.chat: Chat
+space.chat.type_message: Type a comment here and hit Shift+Enter or Send button to send
+space.chat.send: Send
+
+contact_form.name: Name
+contact_form.email: Email
+contact_form.subject: Subject
+contact_form.message: Message
+contact_form.placeholder_name: What\'s your name?
+contact_form.placeholder_email: So we can contact you.
+contact_form.placeholder_subject: The subject of your message.
+contact_form.placeholder_message: Write your message here...

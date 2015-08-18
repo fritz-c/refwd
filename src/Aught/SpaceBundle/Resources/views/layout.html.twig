@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6"{#  lang="en" #}> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7"{#  lang="en" #}> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8"{#  lang="en" #}> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html{#  lang="en" #}> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset={{ _charset }}"/>
+    <title>{% block title %}{% trans %} app.name {% endtrans %}{% endblock %}</title>
+    <meta name="description" content="{% trans %} general.meta_description {% endtrans %}" />
+    <meta name="keywords" content="{% trans %} general.meta_keywords {% endtrans %}" />
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+  ================================================== -->
+    <link href="{{ asset('bundles/aughtspace/css/skeleton/base.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('bundles/aughtspace/css/skeleton/skeleton.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('bundles/aughtspace/css/skeleton/layout.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('bundles/aughtspace/css/general.css') }}" rel="stylesheet" type="text/css" media="all" />
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Favicons
+  ================================================== -->
+    <link rel="shortcut icon" href="{{ asset('bundles/aughtspace/images/favicon.ico') }}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{{ asset('bundles/aughtspace/images/apple-touch-icon.png') }}" />
+    <link rel="apple-touch-icon" sizes="57x57"   href="{{ asset('bundles/aughtspace/images/apple-touch-icon-57x57.png') }}" />
+    <link rel="apple-touch-icon" sizes="72x72"   href="{{ asset('bundles/aughtspace/images/apple-touch-icon-72x72.png') }}" />
+    <link rel="apple-touch-icon" sizes="76x76"   href="{{ asset('bundles/aughtspace/images/apple-touch-icon-76x76.png') }}" />
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('bundles/aughtspace/images/apple-touch-icon-114x114.png') }}" />
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('bundles/aughtspace/images/apple-touch-icon-120x120.png') }}" />
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('bundles/aughtspace/images/apple-touch-icon-144x144.png') }}" />
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('bundles/aughtspace/images/apple-touch-icon-152x152.png') }}" />
+
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+
+    <!-- Primary Page Layout
+  ================================================== -->
+    <div id="wrapper">
+        <div id="header">
+            <div class="container">
+                {% block header %}
+                    <div class="fourteen columns alpha">&nbsp;</div>
+                    <div class="two columns omega" style="text-align: right;">
+                    {% for lang in ['en','ja'] %}
+                        {% if lang == app.request.locale %}
+                            <span>{{ ('general.lang_' ~ lang)|trans }}</span>
+                        {% else %}
+                            {% set route = app.request.attributes.get('_route') %}
+                            {% if '_lang' not in route %}
+                                {% set route = route ~ '_lang' %}
+                            {% endif %}
+                            <a href="{{ path(route,
+                                app.request.attributes.get('_route_params')|merge({'_locale': lang})) }}{% if app.request.queryString is not empty %}{{ '?' ~ app.request.queryString}}{% endif %}">{{ ('general.lang_' ~ lang)|trans }}</a>
+                        {% endif %}
+                        {% if not loop.last %}|{% endif %}
+                    {% endfor %}
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+        <div id="footer">
+            {% block footer %}
+                <div class="container">
+                    <span class="eight columns"></span>
+                    <a href="{{ path('terms_lang', {'_locale': app.request.locale}) }}">{% trans %}general.terms_of_use{% endtrans %}</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ path('contact_lang', {'_locale': app.request.locale}) }}">{% trans %}general.contact{% endtrans %}</a>
+                </div>
+            {% endblock %}
+        </div>
+        {% block foot_scripts %}{% endblock %}
+    </div>
+</body>
+</html>

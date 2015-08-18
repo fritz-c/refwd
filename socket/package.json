@@ -1,0 +1,9 @@
+{
+  "name": "chat-socket",
+  "version": "0.0.1",
+  "description": "Socket for live chat",
+  "dependencies": {
+    "request": "^2.37.0",
+    "socket.io": "^1.0.6"
+  }
+}

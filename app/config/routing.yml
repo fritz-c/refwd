@@ -1,0 +1,4 @@
+space:
+    resource: "@AughtSpaceBundle/Controller"
+    type:     annotation
+    # prefix:   /

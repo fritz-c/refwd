@@ -1,0 +1,59 @@
+services:
+    chat:
+        class: Aught\SpaceBundle\Services\Chat
+        arguments:
+            - @doctrine.orm.default_entity_manager
+            - @user_repository
+            - @space_repository
+            - @relish_repository
+
+    storage_utils:
+        class: Aught\SpaceBundle\Services\StorageUtils
+        arguments:
+            - %aws_s3_key%
+            - %aws_s3_secret%
+            - %aws_s3_images_bucket%
+            - %aws_s3_acp_owner%
+
+    image_utils:
+        class: Aught\SpaceBundle\Services\ImageUtils
+
+    email_utils:
+        class: Aught\SpaceBundle\Services\EmailUtils
+        arguments:
+            - @user_repository
+            - @space_repository
+            - @image_utils
+            - @storage_utils
+
+    user_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Aught\SpaceBundle\Entity\User
+
+    space_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Aught\SpaceBundle\Entity\Space
+
+    relish_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Aught\SpaceBundle\Entity\Relish
+
+    # twig.extension.intl:
+    #     class: Twig_Extensions_Extension_Intl
+    #     tags:
+    #         - { name: twig.extension }
+
+    # salavert.twig.time_ago:
+    #     class: Salavert\Twig\Extension\TimeAgoExtension
+    #     arguments: [@translator]
+    #     tags:
+    #         - { name: twig.extension }

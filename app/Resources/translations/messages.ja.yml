@@ -1,0 +1,78 @@
+# Japanese Translation File
+app.name: Re-Fwd
+app.login: ログイン
+
+general.terms_of_use: 利用規約
+general.contact: 問い合わせ
+general.lang_en: English
+general.lang_ja: 日本語
+general.meta_description: >
+  メールの宛先にRe-Fwdを加えるだけで、その内容についていいね！や熱いチャットが出来るスペースを宛先に提供
+general.meta_keywords: >
+  メール 転送 コメント いいね！ サービス 面白い
+  ビジネス 職場 ストーリー ソーシャル SNS
+
+home.headline: メール転送を次世代に
+home.what_is_headline: Re-Fwdとは？
+home.howto_headline: どうやって使いますか?
+home.interested_headline: いかがでしょうか？
+home.what_is_lead_in: "Re-Fwdを利用して、メール転送を楽しくするこの機能が使えます:"
+home.likes_description: >
+  <strong>いいね！</strong>:
+  これ面白い！なるほど！を気楽に伝えます。
+home.comments_description: >
+  <strong>コメント</strong>:
+  チャット機能を利用して、普通の電子メールは敵わないペースで会話をします。
+home.styling_description: >
+  <strong>さっぱりした見た目</strong>:
+  クリーンなフォーマットでメールを展示できます。例のページは%example_page%で見られます。
+home.howto: >
+  <a href="mailto:add@re-fwd.com">add@re-fwd.com</a>
+  を転送するメールの <strong>To:</strong>か<strong>CC:</strong>、<strong>BCC:</strong>
+  フィールドのいずれかに追加して送信するとページが自動的に生成されます。
+  すると、最初のメールの返信として、ページリンクの知らせメールが差出人と宛先全員に間もなく送信されます。
+home.interested: 今すぐ使ってみるか、%example_page%の例のページをご覧になってください!
+home.example_page_token: bu7mx3fvqtzz
+home.example_page_user: iida@example.net
+home.example_page_linktext: こちら
+home.about: "Re-Fwd (pronounced \"re-forward\")"
+home.disclaimer: Use this service at your own risk. I claim no liability.
+
+space.new_space: 新規スペース
+space.add_comment: コメント
+space.who_are_you: どちら様ですか？
+space.relish: いいね！
+space.relish_divider: 、
+space.relish_and: 、
+space.relish_button: いいね！
+space.unrelish_button: いいね！を取り消す
+space.relish_you: あなた
+space.relish_this_singular: "がいいね！と言っています。"
+space.relish_this_plural: "がいいね！と言っています。"
+space.n_others_relish_singular: 、他{0}人
+space.n_others_relish_plural: 、他{0}人
+
+space.chat: チャット
+space.chat.type_message: ここにコメントをお書きになって、Shift+Enterまたは送信ボタンを押してください
+space.chat.send: 送信
+
+contact_form.name: お名前
+contact_form.email: メールアドレス
+contact_form.subject: 件名
+contact_form.message: メッセージ
+contact_form.placeholder_name: お名前は何ですか？
+contact_form.placeholder_email: 返信するために
+contact_form.placeholder_subject: 問い合わせの件名
+contact_form.placeholder_message: ここに問い合わせの内容を記入になってください。
+
+# Time ago in words - Twig Extension
+less than %seconds seconds ago: 〜%seconds秒前
+half a minute ago: 約30秒前
+less than a minute ago: 1分以内
+1 minute ago: 1分前
+%minutes minutes ago: %minutes分前
+about 1 hour ago: 約1時間前
+about %hours hours ago: 約%hours時間前
+1 day ago: 1日前
+%days days ago: %days日前
+"{1} 1 month ago |]1,Inf[ %months months ago": "{1} 1ケ月前 |]1,Inf[ %monthsケ月前"
